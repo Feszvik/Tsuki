@@ -27,7 +27,7 @@
   }
   .estrella {
     position: absolute;
-    width: 2px; height: 2px;
+    width: 2.5px; height: 2.5px;
     background: white;
     border-radius: 50%;
     opacity: 0.8;
@@ -41,10 +41,10 @@
   /* 🌙 Título principal */
   #mensaje {
     text-align: center;
-    font-size: 26px;
+    font-size: 34px;
     font-weight: bold;
     margin-top: 40px;
-    text-shadow: 0 0 15px #aaaaff, 0 0 40px #6666ff;
+    text-shadow: 0 0 18px #aaaaff, 0 0 50px #6666ff;
     animation: glowPulse 5s ease-in-out infinite;
   }
   @keyframes glowPulse {
@@ -52,9 +52,9 @@
     50% { text-shadow: 0 0 20px #fff, 0 0 60px #bbbaff; }
   }
 
-  /* 🌙 Imagen de luna (decorativa, más arriba) */
+  /* 🌙 Imagen decorativa */
   .luna {
-    width: 90px;
+    width: 120px;
     margin-top: 15px;
     filter: drop-shadow(0 0 10px #ccc);
     opacity: 0.9;
@@ -65,16 +65,16 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    gap: 15px;
-    margin: 30px auto;
-    width: 90%;
+    gap: 18px;
+    margin: 35px auto;
+    width: 95%;
   }
   .galeria img {
-    width: 110px;
-    height: 110px;
+    width: 140px;
+    height: 140px;
     object-fit: cover;
-    border-radius: 12px;
-    filter: drop-shadow(0 0 8px #aaaaff88);
+    border-radius: 15px;
+    filter: drop-shadow(0 0 10px #aaaaff88);
     transition: transform 0.3s ease;
   }
   .galeria img:hover {
@@ -83,39 +83,26 @@
 
   /* 💬 Mensaje final */
   #mensajePersonal {
-    background: rgba(0, 0, 30, 0.5);
+    background: rgba(0, 0, 30, 0.55);
     color: #e0e0ff;
     border: none;
     outline: none;
-    padding: 18px;
-    font-size: 17px;
-    width: 85%;
-    border-radius: 12px;
+    padding: 22px;
+    font-size: 19px;
+    width: 90%;
+    border-radius: 15px;
     resize: none;
-    line-height: 1.6em;
-    box-shadow: 0 0 8px #8888ff44;
-    margin-bottom: 40px;
+    line-height: 1.7em;
+    box-shadow: 0 0 10px #8888ff44;
+    margin-bottom: 60px;
     text-align: center;
   }
 
-  /* 🌠 Diseño especial para pantallas grandes */
+  /* 🌠 PC - se mantiene normal */
   @media (min-width: 769px) {
-    body {
-      padding: 40px;
-      flex-direction: column;
-    }
-    #mensaje {
-      font-size: 32px;
-      margin-top: 60px;
-    }
-    .galeria img {
-      width: 160px;
-      height: 160px;
-    }
-    #mensajePersonal {
-      max-width: 600px;
-      font-size: 18px;
-    }
+    #mensaje { font-size: 36px; }
+    .galeria img { width: 160px; height: 160px; }
+    #mensajePersonal { max-width: 650px; font-size: 18px; }
   }
 </style>
 </head>
@@ -137,16 +124,16 @@ Mooooooonnnn, quería darte un pequeño recordatorio que
 a pesar de no hablar seguido contigo, siempre serás una 
 persona bastante importante para mí... 
 
-No pienses que en algún momento me olvidare de ti. Los momentos 
-y experiencias que nos hemos compartido son suficientes 
+No pienses que en algún momento me olvidaré de ti. Los momentos 
+y experiencias que hemos compartido son suficientes 
 para nunca olvidarte. 
 
-Realmente gracias por siempre apoyarme y estar conmigo 
-y hare lo que pueda para apoyarte a ti. Entiendo que 
-puede que yo este ocupado pero NUNCA olvidare nuestros momentos. 
+Realmente gracias por siempre apoyarme y estar conmigo, 
+y haré lo que pueda para apoyarte a ti. Entiendo que 
+puede que yo esté ocupado, pero NUNCA olvidaré nuestros momentos. 
 
 Espero que nunca cambies tu forma de ser y siempre tengas 
-esa personalidad que siempre te definía. Te quiero mucho Ana
+esa personalidad que te definía. 💜 Te quiero mucho, Ana.
 </textarea>
 
 <script>
