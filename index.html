@@ -22,6 +22,7 @@
     align-items: center;
   }
 
+  /* 🌌 Fondo de estrellas */
   .fondo {
     position: fixed;
     inset: 0;
@@ -30,7 +31,8 @@
   }
   .estrella {
     position: absolute;
-    width: 3px; height: 3px;
+    width: 3px;
+    height: 3px;
     background: white;
     border-radius: 50%;
     opacity: 0.8;
@@ -44,14 +46,13 @@
   /* 🌙 Título principal */
   #mensaje {
     text-align: center;
-    font-size: min(16vw, 70px); /* más grande en celular */
+    font-size: min(16vw, 70px); /* grande en celular */
     font-weight: bold;
     margin-top: 8vw;
     line-height: 1.2em;
     text-shadow: 0 0 2vw #aaaaff, 0 0 4vw #6666ff;
     animation: glowPulse 5s ease-in-out infinite;
   }
-
   @keyframes glowPulse {
     0%,100% { text-shadow: 0 0 2vw #aaaaff, 0 0 4vw #8888ff; }
     50% { text-shadow: 0 0 3vw #fff, 0 0 6vw #bbbaff; }
@@ -59,14 +60,14 @@
 
   /* 🌙 Luna gigante en móvil */
   .luna {
-    width: 50vw; /* casi la mitad de la pantalla */
-    max-width: 250px;
+    width: 65vw;  /* mucho más grande */
+    max-width: 300px;
     margin-top: 6vw;
     filter: drop-shadow(0 0 2vw #ccc);
     opacity: 0.95;
   }
 
-  /* ✨ Galería enorme */
+  /* ✨ Galería enorme en móvil */
   .galeria {
     display: flex;
     flex-wrap: wrap;
@@ -76,10 +77,10 @@
     width: 95%;
   }
   .galeria img {
-    width: 45vw; /* imágenes enormes */
-    height: 45vw;
+    width: 55vw; /* muy grande */
+    height: 55vw;
     object-fit: cover;
-    border-radius: 5vw;
+    border-radius: 6vw;
     filter: drop-shadow(0 0 2vw #aaaaff88);
     transition: transform 0.3s ease;
   }
@@ -93,23 +94,23 @@
     color: #e0e0ff;
     border: none;
     outline: none;
-    padding: 6vw;
-    font-size: 7vw; /* más grande aún */
+    padding: 7vw;
+    font-size: 8vw; /* enorme en móvil */
     width: 95%;
-    border-radius: 6vw;
+    border-radius: 7vw;
     resize: none;
     line-height: 1.6em;
     box-shadow: 0 0 2.5vw #8888ff44;
-    margin-bottom: 8vw;
+    margin-bottom: 10vw;
     text-align: center;
   }
 
   /* 💻 Ajustes para PC */
   @media (min-width: 769px) {
     #mensaje { font-size: 36px; margin-top: 60px; }
-    .luna { width: 120px; }
-    .galeria img { width: 160px; height: 160px; }
-    #mensajePersonal { font-size: 18px; max-width: 650px; padding: 20px; }
+    .luna { width: 120px; max-width: none; }
+    .galeria img { width: 160px; height: 160px; border-radius: 12px; }
+    #mensajePersonal { font-size: 18px; max-width: 650px; padding: 20px; border-radius: 12px; margin-bottom: 40px; }
   }
 </style>
 </head>
@@ -146,13 +147,13 @@ esa personalidad que te definía. 💜 Te quiero mucho Ana.
 <script>
   // 🌠 Crear estrellas ligeras
   const fondo = document.getElementById('fondo');
-  const total = 50;
+  const total = window.innerWidth < 768 ? 35 : 120; // menos estrellas en móvil
   for (let i = 0; i < total; i++) {
     const s = document.createElement('div');
     s.className = 'estrella';
-    s.style.left = Math.random()*100+'%';
-    s.style.top = Math.random()*100+'%';
-    s.style.animationDelay = Math.random()*5+'s';
+    s.style.left = Math.random() * 100 + '%';
+    s.style.top = Math.random() * 100 + '%';
+    s.style.animationDelay = Math.random() * 5 + 's';
     fondo.appendChild(s);
   }
 </script>
