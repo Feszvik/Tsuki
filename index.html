@@ -11,17 +11,9 @@ html, body {
   font-family: 'Courier New', monospace;
   width: 100%;
   height: 100%;
-  background: radial-gradient(circle at 50% 20%, #0a0a1a, #000);
-  color: #fff;
   overflow-x: hidden;
-}
-
-body {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center; /* centrado vertical */
-  min-height: 100vh;
+  background: #000;
+  color: #fff;
 }
 
 /* Fondo de estrellas */
@@ -45,26 +37,35 @@ body {
   to { opacity: 1; transform: scale(1.3); }
 }
 
-/* Título principal */
-#mensaje {
+/* Secciones */
+.seccion {
+  width: 100%;
+  height: 100vh; /* llena toda la pantalla */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   text-align: center;
-  font-size: min(16vw, 70px);
+  padding: 5vw;
+  box-sizing: border-box;
+}
+
+/* Título */
+#mensaje {
+  font-size: 16vw;
   font-weight: bold;
-  line-height: 1.2em;
-  text-shadow: 0 0 2vw #aaaaff, 0 0 4vw #6666ff;
+  text-shadow: 0 0 4vw #aaaaff, 0 0 8vw #6666ff;
   animation: glowPulse 5s ease-in-out infinite;
-  margin-bottom: 4vw;
 }
 @keyframes glowPulse {
-  0%,100% { text-shadow: 0 0 2vw #aaaaff, 0 0 4vw #8888ff; }
-  50% { text-shadow: 0 0 3vw #fff, 0 0 6vw #bbbaff; }
+  0%,100% { text-shadow: 0 0 4vw #aaaaff, 0 0 8vw #8888ff; }
+  50% { text-shadow: 0 0 6vw #fff, 0 0 12vw #bbbaff; }
 }
 
 /* Luna */
 .luna {
-  width: 65vw;
+  width: 70vw;
   max-width: 300px;
-  margin-bottom: 5vw;
   filter: drop-shadow(0 0 2vw #ccc);
   opacity: 0.95;
 }
@@ -76,13 +77,12 @@ body {
   justify-content: center;
   gap: 5vw;
   width: 95%;
-  margin-bottom: 5vw;
 }
 .galeria img {
-  width: 50vw;
-  height: 50vw;
+  width: 45vw;
+  height: 45vw;
   object-fit: cover;
-  border-radius: 6vw;
+  border-radius: 5vw;
   filter: drop-shadow(0 0 2vw #aaaaff88);
   transition: transform 0.3s ease;
 }
@@ -90,29 +90,30 @@ body {
   transform: scale(1.05);
 }
 
-/* Texto */
+/* Mensaje */
 #mensajePersonal {
   background: rgba(0,0,30,0.6);
   color: #e0e0ff;
   border: none;
   outline: none;
-  padding: 7vw;
-  font-size: 7.5vw;
+  padding: 6vw;
+  font-size: 6.5vw;
   width: 95%;
-  border-radius: 7vw;
+  border-radius: 6vw;
   resize: none;
   line-height: 1.6em;
-  box-shadow: 0 0 2.5vw #8888ff44;
+  box-shadow: 0 0 2vw #8888ff44;
   text-align: center;
+  overflow-y: auto;
 }
 
-/* PC */
+/* PC ajustes */
 @media (min-width: 769px) {
-  body { justify-content: flex-start; padding-top: 60px; }
-  #mensaje { font-size: 36px; margin-bottom: 20px; }
-  .luna { width: 120px; max-width: none; margin-bottom: 20px; }
+  .seccion { height: auto; padding: 40px; }
+  #mensaje { font-size: 36px; }
+  .luna { width: 120px; max-width: none; }
   .galeria img { width: 160px; height: 160px; border-radius: 12px; }
-  #mensajePersonal { font-size: 18px; max-width: 650px; padding: 20px; border-radius: 12px; margin-bottom: 40px; }
+  #mensajePersonal { font-size: 18px; max-width: 650px; padding: 20px; border-radius: 12px; }
 }
 </style>
 </head>
@@ -120,16 +121,28 @@ body {
 
 <div class="fondo" id="fondo"></div>
 
-<div id="mensaje">🌙 Feliz Cumpleaños Tuski 🌙</div>
-<img class="luna" src="https://earthhow.com/wp-content/uploads/2019/08/Man-on-the-moon-425x425.png" alt="Luna decorativa">
-
-<div class="galeria">
-  <img src="https://preview.redd.it/1trb4hgmcoo41.jpg?width=1080&crop=smart&auto=webp&s=e3371ed3f945e1c4275978f6df35a336c077cd1a" alt="Flor decorativa">
-  <img src="https://preview.redd.it/dream-witch-4th-character-day-art-v0-osl2tgoummrb1.jpg?auto=webp&s=56212385788f23cd14d91968688daf6b4df8df4b" alt="Goth deco">
-  <img src="https://www.patasencasa.com/sites/default/files/styles/article_detail_desktop/public/2024-06/%C2%BFTu%20mood%20hoy%20es%20travieso%20o%20encantador%20%20%23sanrio%20%23sanriomexico%20%23kuromi%20%23kuromimexico_0.jpg.webp?itok=Mh7Co1FK" alt="Kuromi">
+<!-- Sección Título -->
+<div class="seccion" id="seccionTitulo">
+  <div id="mensaje">🌙 Feliz Cumpleaños Tuski 🌙</div>
 </div>
 
-<textarea id="mensajePersonal" readonly>
+<!-- Sección Luna -->
+<div class="seccion" id="seccionLuna">
+  <img class="luna" src="https://earthhow.com/wp-content/uploads/2019/08/Man-on-the-moon-425x425.png" alt="Luna decorativa">
+</div>
+
+<!-- Sección Galería -->
+<div class="seccion" id="seccionGaleria">
+  <div class="galeria">
+    <img src="https://preview.redd.it/1trb4hgmcoo41.jpg?width=1080&crop=smart&auto=webp&s=e3371ed3f945e1c4275978f6df35a336c077cd1a" alt="Flor decorativa">
+    <img src="https://preview.redd.it/dream-witch-4th-character-day-art-v0-osl2tgoummrb1.jpg?auto=webp&s=56212385788f23cd14d91968688daf6b4df8df4b" alt="Goth deco">
+    <img src="https://www.patasencasa.com/sites/default/files/styles/article_detail_desktop/public/2024-06/%C2%BFTu%20mood%20hoy%20es%20travieso%20o%20encantador%20%20%23sanrio%20%23sanriomexico%20%23kuromi%20%23kuromimexico_0.jpg.webp?itok=Mh7Co1FK" alt="Kuromi">
+  </div>
+</div>
+
+<!-- Sección Mensaje -->
+<div class="seccion" id="seccionMensaje">
+  <textarea id="mensajePersonal" readonly>
 Mooooooonnnn, quería darte un pequeño recordatorio que 
 a pesar de no hablar seguido contigo, siempre serás una 
 persona bastante importante para mí... 
@@ -144,7 +157,8 @@ puede que yo esté ocupado, pero NUNCA olvidaré nuestros momentos.
 
 Espero que nunca cambies tu forma de ser y siempre tengas 
 esa personalidad que te definía. 💜 Te quiero mucho Ana.
-</textarea>
+  </textarea>
+</div>
 
 <script>
   // Crear estrellas
