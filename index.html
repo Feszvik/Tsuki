@@ -5,58 +5,63 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Gift for Tuski 🌙</title>
 <style>
-  body {
+  html, body {
     margin: 0;
+    padding: 0;
     font-family: 'Courier New', monospace;
     background: radial-gradient(circle at 50% 20%, #0a0a1a, #000);
     color: #fff;
+    width: 100%;
+    height: 100%;
     overflow-x: hidden;
+  }
+
+  body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    min-height: 100vh;
   }
 
-  /* 🌌 Fondo */
+  /* 🌌 Fondo de estrellas */
   .fondo {
     position: fixed;
     inset: 0;
-    background: radial-gradient(circle at 50% 25%, #151530 0%, #000 100%);
     z-index: -1;
-    overflow: hidden;
+    background: radial-gradient(circle at 50% 25%, #151530 0%, #000 100%);
   }
   .estrella {
     position: absolute;
-    width: 2.5px; height: 2.5px;
+    width: 3px;
+    height: 3px;
     background: white;
     border-radius: 50%;
     opacity: 0.8;
-    animation: twinkle 6s infinite ease-in-out alternate;
+    animation: twinkle 5s infinite ease-in-out alternate;
   }
   @keyframes twinkle {
     from { opacity: 0.3; transform: scale(0.8); }
-    to { opacity: 1; transform: scale(1.2); }
+    to { opacity: 1; transform: scale(1.3); }
   }
 
   /* 🌙 Título principal */
   #mensaje {
     text-align: center;
-    font-size: 34px;
+    font-size: 8vw; /* tamaño relativo al ancho del celular */
     font-weight: bold;
-    margin-top: 40px;
-    text-shadow: 0 0 18px #aaaaff, 0 0 50px #6666ff;
+    margin-top: 5vw;
+    text-shadow: 0 0 2vw #aaaaff, 0 0 5vw #6666ff;
     animation: glowPulse 5s ease-in-out infinite;
   }
   @keyframes glowPulse {
-    0%, 100% { text-shadow: 0 0 10px #aaaaff, 0 0 25px #8888ff; }
-    50% { text-shadow: 0 0 20px #fff, 0 0 60px #bbbaff; }
+    0%,100% { text-shadow: 0 0 2vw #aaaaff, 0 0 5vw #8888ff; }
+    50% { text-shadow: 0 0 3vw #fff, 0 0 6vw #bbbaff; }
   }
 
   /* 🌙 Imagen decorativa */
   .luna {
-    width: 120px;
-    margin-top: 15px;
-    filter: drop-shadow(0 0 10px #ccc);
+    width: 20vw;
+    margin-top: 4vw;
+    filter: drop-shadow(0 0 1vw #ccc);
     opacity: 0.9;
   }
 
@@ -65,16 +70,16 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    gap: 18px;
-    margin: 35px auto;
+    gap: 4vw;
+    margin: 5vw auto;
     width: 95%;
   }
   .galeria img {
-    width: 140px;
-    height: 140px;
+    width: 28vw;
+    height: 28vw;
     object-fit: cover;
-    border-radius: 15px;
-    filter: drop-shadow(0 0 10px #aaaaff88);
+    border-radius: 3vw;
+    filter: drop-shadow(0 0 1vw #aaaaff88);
     transition: transform 0.3s ease;
   }
   .galeria img:hover {
@@ -87,22 +92,23 @@
     color: #e0e0ff;
     border: none;
     outline: none;
-    padding: 22px;
-    font-size: 19px;
+    padding: 4vw;
+    font-size: 5vw;
     width: 90%;
-    border-radius: 15px;
+    border-radius: 4vw;
     resize: none;
-    line-height: 1.7em;
-    box-shadow: 0 0 10px #8888ff44;
-    margin-bottom: 60px;
+    line-height: 1.6em;
+    box-shadow: 0 0 2vw #8888ff44;
+    margin-bottom: 8vw;
     text-align: center;
   }
 
-  /* 🌠 PC - se mantiene normal */
+  /* 🌠 Solo para pantallas grandes */
   @media (min-width: 769px) {
-    #mensaje { font-size: 36px; }
+    #mensaje { font-size: 36px; margin-top: 60px; }
+    .luna { width: 120px; }
     .galeria img { width: 160px; height: 160px; }
-    #mensajePersonal { max-width: 650px; font-size: 18px; }
+    #mensajePersonal { font-size: 18px; max-width: 650px; padding: 20px; }
   }
 </style>
 </head>
@@ -137,9 +143,9 @@ esa personalidad que te definía. 💜 Te quiero mucho, Ana.
 </textarea>
 
 <script>
-  // 🌠 Crear estrellas (menos en móviles)
+  // 🌠 Crear estrellas
   const fondo = document.getElementById('fondo');
-  const total = window.innerWidth < 768 ? 35 : 120;
+  const total = 40;
   for (let i = 0; i < total; i++) {
     const s = document.createElement('div');
     s.className = 'estrella';
