@@ -26,18 +26,18 @@
   .fondo {
     position: fixed;
     inset: 0;
-    z-index: -1;
+    z-index: 0;
     background: radial-gradient(circle at 50% 25%, #151530 0%, #000 100%);
+    pointer-events: none;
   }
   .estrella {
     position: absolute;
-    width: 4px;
-    height: 4px;
+    width: 2px;
+    height: 2px;
     background: white;
     border-radius: 50%;
     opacity: 1;
-    box-shadow: 0 0 6px white;
-    z-index: 0;
+    box-shadow: 0 0 4px white;
   }
 
   /* 🌙 Secciones verticales */
@@ -87,23 +87,24 @@
   }
 
   /* 💬 Texto */
-#mensajePersonal {
+  #mensajePersonal {
     background: rgba(0,0,30,0.85);
     color: #e0e0ff;
     border: none;
     outline: none;
-    padding: 4vw;           /* espacio dentro razonable */
-    font-size: 6vw;         /* letra más legible y proporcional */
+    padding: 4vw;
+    font-size: 6vw;
     width: 90%;
-    height: 60vh;            /* ocupa más de la pantalla vertical */
+    height: 60vh;
     border-radius: 6vw;
     resize: none;
     line-height: 1.5em;
     box-shadow: 0 0 3vw #8888ff44;
     margin-bottom: 4vw;
     text-align: center;
-    overflow-y: auto;        /* scroll vertical para leer todo */
-}
+    overflow-y: auto;
+  }
+
   /* 🌌 Sección decorativa extra */
   .decorativa {
     width: 100%;
@@ -177,12 +178,15 @@ esa personalidad que te definía. 💜 Te quiero mucho Ana.
 
 <script>
 const fondo = document.getElementById('fondo');
-const total = 150; // muchos puntos fijos
+const total = 150;
 for (let i = 0; i < total; i++) {
   const s = document.createElement('div');
   s.className = 'estrella';
   s.style.left = Math.random() * 100 + '%';
   s.style.top = Math.random() * 100 + '%';
+  let size = 2 + Math.random() * 3; // tamaño variable
+  s.style.width = size + 'px';
+  s.style.height = size + 'px';
   fondo.appendChild(s);
 }
 </script>
