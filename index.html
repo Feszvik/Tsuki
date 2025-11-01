@@ -26,7 +26,7 @@
   .fondo {
     position: fixed;
     inset: 0;
-    z-index: 0;
+    z-index: 0; /* fondo detrás de todo */
     background: radial-gradient(circle at 50% 25%, #151530 0%, #000 100%);
     pointer-events: none;
   }
@@ -48,6 +48,8 @@
     align-items: center;
     justify-content: center;
     padding: 6vw 0;
+    z-index: 1; /* contenido por encima del fondo */
+    position: relative;
   }
 
   /* 🌙 Título principal */
@@ -69,7 +71,7 @@
     opacity: 0.95;
   }
 
-  /* ✨ Galería*/
+  /* ✨ Galería */
   .galeria {
     display: flex;
     flex-wrap: wrap;
@@ -103,6 +105,8 @@
     margin-bottom: 4vw;
     text-align: center;
     overflow-y: auto;
+    z-index: 1;  /* encima del fondo */
+    position: relative;
   }
 
   /* 🌌 Sección decorativa extra */
@@ -115,6 +119,7 @@
     background: radial-gradient(circle at 50% 50%, rgba(200,200,255,0.05) 0%, #000 100%);
     position: relative;
     margin-top: 12vw;
+    z-index: 1;  /* encima del fondo */
   }
   .decorativa::before {
     content: '';
@@ -184,7 +189,7 @@ for (let i = 0; i < total; i++) {
   s.className = 'estrella';
   s.style.left = Math.random() * 100 + '%';
   s.style.top = Math.random() * 100 + '%';
-  let size = 2 + Math.random() * 3; // tamaño variable
+  let size = 2 + Math.random() * 3;
   s.style.width = size + 'px';
   s.style.height = size + 'px';
   fondo.appendChild(s);
