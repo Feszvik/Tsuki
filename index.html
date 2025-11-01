@@ -85,21 +85,22 @@
   }
 
   /* 💬 Texto */
-  #mensajePersonal {
-    background: rgba(0,0,30,0.6);
+#mensajePersonal {
+    background: rgba(0,0,30,0.7); /* más oscuro y contraste */
     color: #e0e0ff;
     border: none;
     outline: none;
-    padding: 4vw;
-    font-size: 9vw; 
+    padding: 6vw;          /* más espacio dentro */
+    font-size: 6vw;        /* letra mucho más grande y legible */
     width: 90%;
-    height: 85vh;
+    height: 50vh;           /* ocupa casi la mitad de la pantalla */
     border-radius: 6vw;
     resize: none;
     line-height: 1.6em;
     box-shadow: 0 0 3vw #8888ff44;
     margin-bottom: 4vw;
     text-align: center;
+    overflow-y: auto;       /* scroll vertical para leer todo */
 }
   /* 🌌 Sección decorativa extra */
   .decorativa {
