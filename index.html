@@ -9,10 +9,10 @@
     margin: 0;
     padding: 0;
     font-family: 'Courier New', monospace;
-    background: radial-gradient(circle at 50% 20%, #0a0a1a, #000);
-    color: #fff;
     width: 100%;
     height: 100%;
+    background: radial-gradient(circle at 50% 20%, #0a0a1a, #000);
+    color: #fff;
     overflow-x: hidden;
   }
 
@@ -22,7 +22,6 @@
     align-items: center;
   }
 
-  /* 🌌 Fondo de estrellas */
   .fondo {
     position: fixed;
     inset: 0;
@@ -31,8 +30,7 @@
   }
   .estrella {
     position: absolute;
-    width: 3px;
-    height: 3px;
+    width: 3px; height: 3px;
     background: white;
     border-radius: 50%;
     opacity: 0.8;
@@ -43,42 +41,44 @@
     to { opacity: 1; transform: scale(1.3); }
   }
 
-  /* 🌙 Título principal */
+  /* 🌙 Título principal grande en celular */
   #mensaje {
     text-align: center;
-    font-size: 8vw; /* tamaño relativo al ancho del celular */
+    font-size: min(12vw, 60px); /* grande y escalable */
     font-weight: bold;
-    margin-top: 5vw;
-    text-shadow: 0 0 2vw #aaaaff, 0 0 5vw #6666ff;
+    margin-top: 6vw;
+    line-height: 1.2em;
+    text-shadow: 0 0 2vw #aaaaff, 0 0 4vw #6666ff;
     animation: glowPulse 5s ease-in-out infinite;
   }
   @keyframes glowPulse {
-    0%,100% { text-shadow: 0 0 2vw #aaaaff, 0 0 5vw #8888ff; }
+    0%,100% { text-shadow: 0 0 2vw #aaaaff, 0 0 4vw #8888ff; }
     50% { text-shadow: 0 0 3vw #fff, 0 0 6vw #bbbaff; }
   }
 
-  /* 🌙 Imagen decorativa */
+  /* 🌙 Imagen decorativa grande en celular */
   .luna {
-    width: 20vw;
-    margin-top: 4vw;
+    width: 30vw;
+    max-width: 150px;
+    margin-top: 5vw;
     filter: drop-shadow(0 0 1vw #ccc);
     opacity: 0.9;
   }
 
-  /* ✨ Galería de imágenes */
+  /* ✨ Galería grande */
   .galeria {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     gap: 4vw;
-    margin: 5vw auto;
+    margin: 6vw auto;
     width: 95%;
   }
   .galeria img {
-    width: 28vw;
-    height: 28vw;
+    width: 35vw;
+    height: 35vw;
     object-fit: cover;
-    border-radius: 3vw;
+    border-radius: 4vw;
     filter: drop-shadow(0 0 1vw #aaaaff88);
     transition: transform 0.3s ease;
   }
@@ -86,16 +86,16 @@
     transform: scale(1.05);
   }
 
-  /* 💬 Mensaje final */
+  /* 💬 Mensaje final grande */
   #mensajePersonal {
-    background: rgba(0, 0, 30, 0.55);
+    background: rgba(0,0,30,0.55);
     color: #e0e0ff;
     border: none;
     outline: none;
-    padding: 4vw;
-    font-size: 5vw;
+    padding: 5vw;
+    font-size: 6vw; /* realmente grande */
     width: 90%;
-    border-radius: 4vw;
+    border-radius: 5vw;
     resize: none;
     line-height: 1.6em;
     box-shadow: 0 0 2vw #8888ff44;
@@ -103,7 +103,6 @@
     text-align: center;
   }
 
-  /* 🌠 Solo para pantallas grandes */
   @media (min-width: 769px) {
     #mensaje { font-size: 36px; margin-top: 60px; }
     .luna { width: 120px; }
@@ -143,15 +142,15 @@ esa personalidad que te definía. 💜 Te quiero mucho, Ana.
 </textarea>
 
 <script>
-  // 🌠 Crear estrellas
+  // 🌠 Crear estrellas ligeras
   const fondo = document.getElementById('fondo');
-  const total = 40;
+  const total = 50;
   for (let i = 0; i < total; i++) {
     const s = document.createElement('div');
     s.className = 'estrella';
-    s.style.left = Math.random() * 100 + '%';
-    s.style.top = Math.random() * 100 + '%';
-    s.style.animationDelay = (Math.random() * 5) + 's';
+    s.style.left = Math.random()*100+'%';
+    s.style.top = Math.random()*100+'%';
+    s.style.animationDelay = Math.random()*5+'s';
     fondo.appendChild(s);
   }
 </script>
