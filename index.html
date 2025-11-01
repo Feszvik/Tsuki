@@ -31,12 +31,13 @@
   }
   .estrella {
     position: absolute;
-    width: 3px;
-    height: 3px;
+    width: 4px;
+    height: 4px;
     background: white;
     border-radius: 50%;
-    opacity: 0.9;
-    box-shadow: 0 0 4px white; 
+    opacity: 1;
+    box-shadow: 0 0 6px white;
+    z-index: 0;
   }
 
   /* 🌙 Secciones verticales */
@@ -87,21 +88,21 @@
 
   /* 💬 Texto */
 #mensajePersonal {
-    background: rgba(0,0,30,0.7); /* más oscuro y contraste */
+    background: rgba(0,0,30,0.85);
     color: #e0e0ff;
     border: none;
     outline: none;
-    padding: 15vw;          /* más espacio dentro */
-    font-size: 12vw;        /* letra mucho más grande y legible */
+    padding: 4vw;           /* espacio dentro razonable */
+    font-size: 6vw;         /* letra más legible y proporcional */
     width: 90%;
-    height: 50vh;           /* ocupa casi la mitad de la pantalla */
+    height: 60vh;            /* ocupa más de la pantalla vertical */
     border-radius: 6vw;
     resize: none;
-    line-height: 1.6em;
+    line-height: 1.5em;
     box-shadow: 0 0 3vw #8888ff44;
     margin-bottom: 4vw;
     text-align: center;
-    overflow-y: auto;       /* scroll vertical para leer todo */
+    overflow-y: auto;        /* scroll vertical para leer todo */
 }
   /* 🌌 Sección decorativa extra */
   .decorativa {
@@ -112,7 +113,7 @@
     align-items: center;
     background: radial-gradient(circle at 50% 50%, rgba(200,200,255,0.05) 0%, #000 100%);
     position: relative;
-    margin-top: 6vw;
+    margin-top: 12vw;
   }
   .decorativa::before {
     content: '';
