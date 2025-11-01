@@ -13,6 +13,7 @@
     overflow: hidden;
   }
 
+  /* 🌙 Mensaje superior (PC) */
   #mensaje {
     position: absolute;
     top: 20px;
@@ -31,6 +32,7 @@
     50% { text-shadow: 0 0 20px #ffffff, 0 0 60px #bbbaff; transform: translateY(-5px); }
   }
 
+  /* 💬 Texto personal */
   #mensajePersonal {
     position: absolute;
     bottom: 60px;
@@ -50,17 +52,19 @@
     z-index: 2;
   }
 
+  /* ✨ Imágenes decorativas */
   .decoracion {
     position: absolute;
     filter: drop-shadow(0 0 12px #aaaaff);
     opacity: 0.9;
     z-index: 2;
   }
+
   #identityv { bottom: 60px; left: 60px; width: 200px; }
   #goth { top: 120px; left: 50px; width: 170px; }
   #kuromi { top: calc(50% - 160px); right: calc(50% - 300px); width: 180px; }
 
-  /* 🌙 En móvil: cambia el orden y desactiva animaciones costosas */
+  /* 🌙 En móvil */
   @media (max-width: 768px) {
     body {
       display: flex;
@@ -73,27 +77,31 @@
     #mensaje {
       position: static;
       font-size: 22px;
-      margin-top: 15px;
-    }
-
-    #kuromi, #goth, #identityv {
-      position: static;
-      width: 100px;
-      margin: 8px 0;
-      filter: drop-shadow(0 0 5px #aaaaff);
+      margin-top: 25px;
+      order: 1;
     }
 
     #mensajePersonal {
       position: static;
       width: 90%;
-      height: 180px;
+      height: 200px;
       font-size: 16px;
-      margin: 10px 0 20px 0;
+      margin: 15px 0;
+      order: 2;
     }
 
-    /* Se reduce el uso de animaciones para no dar lag */
+    /* Las imágenes van al final */
+    #kuromi, #goth, #identityv {
+      position: static;
+      width: 110px;
+      margin: 10px auto;
+      filter: drop-shadow(0 0 6px #aaaaff);
+      order: 3;
+    }
+
+    /* El canvas (fondo) queda fijo detrás */
     canvas {
-      position: absolute !important;
+      position: fixed !important;
       top: 0;
       left: 0;
       z-index: -1;
@@ -104,9 +112,11 @@
 </head>
 <body>
 
+<!-- 🌙 Contenido -->
 <div id="mensaje">🌙 Feliz Cumpleaños Tuski 🌙</div>
 
-<textarea id="mensajePersonal" readonly placeholder="Feliz cumpleaños Mooooooonnnn 🌙💜
+<textarea id="mensajePersonal" readonly>
+Feliz cumpleaños Mooooooonnnn 🌙💜
 
 Solo quería recordarte que aunque no hablemos seguido,
 siempre serás alguien muy importante para mí.
@@ -115,12 +125,14 @@ Gracias por cada momento, por tu apoyo y por seguir
 siendo tú: auténtica, divertida y luminosa.
 Nunca voy a olvidar los recuerdos contigo.
 
-Te quiero mucho, Ana 💫"></textarea>
+Te quiero mucho, Ana 💫
+</textarea>
 
 <img id="identityv" class="decoracion" src="https://preview.redd.it/dream-witch-4th-character-day-art-v0-osl2tgoummrb1.jpg?auto=webp&s=56212385788f23cd14d91968688daf6b4df8df4b" alt="Flor">
 <img id="goth" class="decoracion" src="https://preview.redd.it/1trb4hgmcoo41.jpg?width=1080&crop=smart&auto=webp&s=e3371ed3f945e1c4275978f6df35a336c077cd1a" alt="Mariposa">
-<img id="kuromi" src="https://www.patasencasa.com/sites/default/files/styles/article_detail_desktop/public/2024-06/%C2%BFTu%20mood%20hoy%20es%20travieso%20o%20encantador%20%20%23sanrio%20%23sanriomexico%20%23sanriomexico_0.jpg.webp?itok=Mh7Co1FK" alt="Kuromi">
+<img id="kuromi" class="decoracion" src="https://www.patasencasa.com/sites/default/files/styles/article_detail_desktop/public/2024-06/%C2%BFTu%20mood%20hoy%20es%20travieso%20o%20encantador%20%20%23sanrio%20%23sanriomexico%20%23kuromi%20%23kuromimexico_0.jpg.webp?itok=Mh7Co1FK" alt="Kuromi">
 
+<!-- 🌌 Canvas p5.js -->
 <script>
 let stars = [];
 let moonCraterPositions = [];
@@ -134,11 +146,7 @@ let gothicConstellations = [
 function setup(){
   createCanvas(window.innerWidth, window.innerHeight);
   scaleConstellations();
-
-  // 💫 Si está en móvil, solo dibuja una vez para evitar lag
-  if (window.innerWidth < 768) {
-    noLoop();
-  }
+  if (window.innerWidth < 768) noLoop();
 
   let starCount = window.innerWidth < 768 ? 40 : 150;
   for(let i=0;i<starCount;i++){
